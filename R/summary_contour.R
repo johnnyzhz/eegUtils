@@ -400,7 +400,7 @@ iso_to_polygon <- function(iso, group = 1) {
 #' @param isoband_levels `names()` of an [isoband::isobands()] object.
 #'
 #' @return A vector of labels like those used in
-#'   [cut()] and [cut_inverval()].
+#'   [cut()] and [cut_interval()].
 #' @noRd
 #'
 pretty_isoband_levels <- function(isoband_levels, dig.lab = 3) {
