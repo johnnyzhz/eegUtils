@@ -7,6 +7,7 @@ conv_to_mat <- function(data,...) {
   UseMethod("conv_to_mat", data)
 }
 
+#' @describeIn conv_to_mat Default method
 conv_to_mat.default <- function(data, ...) {
   stop("Not implemented for objects of class", class(data))
 }
