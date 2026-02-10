@@ -241,9 +241,9 @@ contour_breaks <- function(z_range, bins = NULL, binwidth = NULL, breaks = NULL)
   if (!is.null(bins)) {
     # round lower limit down and upper limit up to make sure
     # we generate bins that span the data range nicely
-    accuracy <- signif(diff(z_range), 1)/10
-    z_range[1] <- floor(z_range[1]/accuracy)*accuracy
-    z_range[2] <- ceiling(z_range[2]/accuracy)*accuracy
+    accuracy <- signif(diff(z_range), 1) / 10
+    z_range[1] <- floor(z_range[1] / accuracy) * accuracy
+    z_range[2] <- ceiling(z_range[2] / accuracy) * accuracy
 
     if (bins == 1) {
       return(z_range)
@@ -404,11 +404,17 @@ iso_to_polygon <- function(iso, group = 1) {
 #' @noRd
 #'
 pretty_isoband_levels <- function(isoband_levels, dig.lab = 3) {
-  interval_low <- gsub(":.*$", "", isoband_levels)
-  interval_high <- gsub("^[^:]*:", "", isoband_levels)
+  interval_low <- as.numeric(gsub(":.*$", "", isoband_levels))
+  interval_high <- as.numeric(gsub("^[^:]*:", "", isoband_levels))
 
-  label_low <- format(as.numeric(interval_low), digits = dig.lab, trim = TRUE)
-  label_high <- format(as.numeric(interval_high), digits = dig.lab, trim = TRUE)
+  breaks <- unique(c(interval_low, interval_high))
+
+  while(anyDuplicated(format(breaks, digits = dig.lab, trim = TRUE))) {
+    dig.lab <- dig.lab + 1
+  }
+
+  label_low <- format(interval_low, digits = dig.lab, trim = TRUE)
+  label_high <- format(interval_high, digits = dig.lab, trim = TRUE)
 
   # from the isoband::isobands() docs:
   # the intervals specifying isobands are closed at their lower boundary
@@ -439,5 +445,3 @@ new_data_frame <- function(x = list(), n = NULL) {
   attr(x, "row.names") <- .set_row_names(n)
   x
 }
-
-

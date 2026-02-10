@@ -16,7 +16,7 @@
 #'
 #' @author Matt Craddock, \email{matt@@mattcraddock.com}
 #' @param data EEG dataset. Should have multiple timepoints.
-#' @param ... Other parameters passed to plot_butterfly
+#' @param ... Other parameters passed to `plot_butterfly`
 #' @examples
 #' plot_butterfly(demo_epochs)
 #' plot_butterfly(demo_epochs,
@@ -196,16 +196,16 @@ plot_butterfly.eeg_lm <- function(data,
     ylab <- expression(paste("Amplitude (", mu, "V)"))
   } else if (identical(quantity, "t_stats")) {
     quantity <- "statistic"
-    ylab <- expression(italic("t")~"-statistic")
+    ylab <- expression(italic("t") ~ "-statistic")
   } else if (identical(quantity, "std_err")) {
     ylab <- expression(paste("Std. error (", mu, "V)"))
   } else if (identical(quantity, "r_sq")) {
     ylab <- expression(paste(italic("r"), {}^2))
   }
 
-   if (is.character(quantity)) {
-     quantity <- as.name(quantity)
-   }
+  if (is.character(quantity)) {
+    quantity <- as.name(quantity)
+  }
 
   create_bf(data,
             legend = legend,
@@ -298,7 +298,7 @@ create_bf <- function(data,
       butterfly_plot +
       geom_line(colour = "black",
                 aes(group = electrode),
-                alpha = 0.2) +
+                alpha = 0.4) +
       labs(x = "Time (s)",
            y = ylab,
            colour = "") +
@@ -315,7 +315,7 @@ create_bf <- function(data,
       butterfly_plot +
       chan_lines() +
       labs(x = "Time (s)",
-           y = ylab,#expression(paste("Amplitude (", mu, "V)")),
+           y = ylab,
            colour = "") +
       geom_hline(yintercept = 0,
                  linewidth = 0.5) +

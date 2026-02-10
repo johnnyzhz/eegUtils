@@ -1,4 +1,3 @@
-load("EEGdat.rda")
 test_data <- import_raw("Newtest17-256.bdf")
 demo_epochs <- electrode_locations(demo_epochs,
                                    montage = "biosemi64alpha",
@@ -107,7 +106,7 @@ test_that("erp_raster and erp_image function", {
   test_epo <- electrode_locations(test_epo,
                                   montage = "biosemi64alpha",
                                   overwrite = TRUE)
-  expect_is(test_epo$chan_info,
+  expect_s3_class(test_epo$chan_info,
             "data.frame")
 })
 

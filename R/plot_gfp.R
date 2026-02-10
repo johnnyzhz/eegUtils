@@ -9,6 +9,7 @@
 #'   separately for different conditions.
 #' @param keep_trials Calculate GFP for each epoch separately, then average over
 #'   epochs.
+#' @author Matt Craddock \email{matt@@mattcraddock.com}
 #' @export
 #' @examples
 #' plot_gfp(demo_spatial)
@@ -50,8 +51,8 @@ plot_gfp.eeg_epochs <- function(data,
   chan_names <- channel_names(data)
 
   gfp <- cbind(
-    df[, c("time", cols), drop= FALSE],
-    gfp = matrixStats::rowSds(as.matrix(df[ , chan_names]))
+    df[, c("time", cols), drop = FALSE],
+    gfp = matrixStats::rowSds(as.matrix(df[, chan_names]))
     )
 
   if (is.character(cols)) {
@@ -70,4 +71,3 @@ plot_gfp.eeg_epochs <- function(data,
          x = "Time (s)") +
     ggplot2::coord_cartesian(expand = FALSE)
 }
-

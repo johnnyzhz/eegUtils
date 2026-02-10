@@ -48,14 +48,13 @@ select_times.default <- function(data,
 #'   that was passed in.
 #' @export
 #' @return `eeg_data` object
-#' @describeIn select_times Select times from an eeg_data object
+#' @describeIn select_times Select times from an `eeg_data` object
 
 select_times.eeg_data <- function(data,
                                   time_lim = NULL,
                                   df_out = FALSE,
                                   ...) {
 
-  #data$signals <- as.data.frame(data)
   keep_rows <- find_times(data$timings, time_lim)
   data$signals <- data$signals[keep_rows, , drop = FALSE]
   data$timings <- data$timings[keep_rows, , drop = FALSE]
@@ -70,7 +69,6 @@ select_times.eeg_data <- function(data,
   if (df_out) {
     return(as.data.frame(data))
   }
-
   data
 }
 
@@ -123,7 +121,7 @@ select_times.eeg_evoked <- function(data,
 select_times.eeg_tfr <- function(data,
                                  time_lim = NULL,
                                  df_out = FALSE,
-                                 ...){
+                                 ...) {
 
   keep_rows <- find_times(data$timings, time_lim)
   data$timings <- data$timings[keep_rows, , drop = FALSE]
@@ -502,7 +500,7 @@ select_epochs.eeg_ICA <- function(data,
     }
   }
   if (df_out) {
-    return(as.data.frame(data))
+    return(tibble::as_tibble(data))
   }
   data
 }
@@ -526,17 +524,18 @@ select_epochs.eeg_tfr <- function(data,
     }
 
     if (is.numeric(epoch_no)) {
-      keep_rows <- data$timings$epoch %in% epoch_no
+      keep_epochs <- dimnames(data$signals)[["epoch"]] %in% as.character(epoch_no)
       if (keep == FALSE) {
-        keep_rows <- !keep_rows
+        keep_epochs <- !keep_epochs
+        data$timings <- data$timings[!data$timings$epoch %in% epoch_no, ]
+      } else {
+        data$timings <- data$timings[data$timings$epoch %in% epoch_no, ]
       }
-      data$signals <- data$signals[, keep_rows[1:length(dimnames(data$signals)[["time"]])], , , drop = FALSE]
-      data$timings <- data$timings[keep_rows, ]
+      data$signals <- data$signals[keep_epochs, , , , drop = FALSE]
       data$events <- data$events[data$events$epoch %in% epoch_no, ]
       if (!is.null(data$epochs)) {
         data$epochs <- data$epochs[data$epochs$epoch %in% epoch_no, ]
       }
-
     }
 
   } else {

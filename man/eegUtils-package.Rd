@@ -4,27 +4,27 @@
 \name{eegUtils-package}
 \alias{eegUtils}
 \alias{eegUtils-package}
-\title{eegUtils: Utilities for Electroencephalographic (EEG) Analysis}
+\title{A package for processing electroencephalographic data}
 \description{
-EEG processing and visualization tools. Includes import functions for 'BioSemi' (.BDF), 'Neuroscan' (.CNT), 'Brain Vision Analyzer' (.VHDR), 'EEGLAB' (.set) and 'Fieldtrip' (.mat). Many preprocessing functions such as referencing, epoching, filtering, and ICA are available. There are a variety of visualizations possible, including timecourse and topographical plotting.
+Electroencephalography data processing and visualization tools. Includes import functions for 'BioSemi' (.BDF), 'Neuroscan' (.CNT), 'Brain Vision Analyzer' (.VHDR), 'EEGLAB' (.set) and 'Fieldtrip' (.mat). Many preprocessing functions such as referencing, epoching, filtering, and ICA are available. There are a variety of visualizations possible, including timecourse and topographical plotting.
 }
 \seealso{
 Useful links:
 \itemize{
   \item \url{https://github.com/craddm/eegUtils}
   \item \url{https://craddm.github.io/eegUtils}
+  \item \url{https://craddm.github.io/eegUtils/}
   \item Report bugs at \url{https://github.com/craddm/eegUtils/issues}
 }
 
 }
 \author{
-\strong{Maintainer}: Matt Craddock \email{matt@mattcraddock.com} [copyright holder]
+\strong{Maintainer}: Matt Craddock \email{matt@mattcraddock.com}
 
 Other contributors:
 \itemize{
   \item Matti Vuorre \email{mv2521@columbia.edu} [contributor]
-  \item ggplot2 authors (Routines borrowed from ggplot2 to allow countours to be drawn on topoplots) [contributor, copyright holder]
+  \item ggplot2 authors (Routines borrowed from ggplot2 to allow contours to be drawn on topoplots) [copyright holder]
 }
 
 }
-\keyword{internal}

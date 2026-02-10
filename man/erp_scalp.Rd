@@ -24,7 +24,7 @@ erp_scalp(data, ...)
 )
 }
 \arguments{
-\item{data}{An EEG dataset.}
+\item{data}{An \code{eeg_epochs} or \code{eeg_evoked} object}
 
 \item{...}{Various arguments passed to specific functions}
 
@@ -47,8 +47,8 @@ line is drawn for each electrode.}
 
 \item{baseline}{Character vector of times to subtract for baseline correct.}
 
-\item{show_guide}{Should a guide showing the scale of the ERP plots be shown.
-Defaults to TRUE.}
+\item{show_guide}{Should be a guide showing the scale of the ERP plots be
+shown. Defaults to TRUE.}
 
 \item{chan_info}{Pass channel information in the standard \code{eegUtils} format
 directly.}
@@ -58,7 +58,7 @@ attempt to us locations from the data. If none are found, it will attempt
 to use standard 10-05 locations.}
 }
 \value{
-Returns a ggplot2 plot object.
+Returns a \code{ggplot2} plot object.
 }
 \description{
 Creates a \code{ggplot2} figure showing the ERP at each electrode, with each

@@ -1,16 +1,19 @@
-# eegUtils (development version)
+# eegUtils 0.8.0
 
 ### Function changes
 - `plot_timecourse()` now requires facets and mappings to be explicitly stated during the call, rather than added afterwards. This allows it to use weighted averages when required.
+- `plot_timecourse.eeg_tfr()` now defaults to no baseline correction, and takes a `type` argument for baseline type to be specified.
 - Added new `plot_gfp()` function for calculating and plotting Global Field Power.
 - `topoplot()` now supports plotting of multiple timepoints - pass a list of times to the `time_lim` argument.
 - `topoplot()` now supports custom fill titles through the `fill_title` argument, and automatically switches where necessary (e.g. now says "Power mV^2"). Fill titles are now also centred.
 - `browse_data.eeg_ICA()` now provides the option to select components for rejection, and returns a character vector of selected components.
+- Recoded `browse_data()` to use `bslib` for styling.
 - `view_ica()` now allows you to select components for rejection, to double-click on topographies to inspect them individually, and to return cleaned data.
 - `eeg_average()` now supports averaging over conditions in `eeg_evoked` files
-- `eeg_average()` now records weights - the number of epochs that went into an average - and uses those in subsequent steps where possible for `eeg_epochs`/`eeg_evoked` objects. Currently only partially implemented for `eeg_tfr` objects.
+- `eeg_average()` now records weights - the number of epochs that went into an average - and uses those in subsequent steps where possible for `eeg_epochs`/`eeg_evoked` / `eeg_tfr` objects. 
 - `compute_tfr()` now has an argument `trim_edges` which allows users to switch off automatic removal of epoch edges after transformation. Defaults to TRUE.
 - `rm_baseline()` now adds a record of the baseline period 
+- Changed logic of `eeg_combine.eeg_epochs()`. Now checks for duplicate epochs directly using `epoch`, `participant_id` and `recording`, and only corrects when there are duplicates. This means `recording` and `participant_id` have to be matching across `eeg_epochs` objects for the timing correction to be applied.
 
 ### Internal changes/bug fixes
 - Recoded `faster_epochs()` to no longer use `data.table`.
@@ -24,6 +27,12 @@
 - `import_raw(..., fast_bdf = TRUE)` will now discard Annotations rather than fail to import BDF files with Annotations.
 - removed dependency on `Matrix` - now using `qr()$rank` in `run_ICA` rather than using `Matrix::rankMatrix()` to determine rank of input signals.
 - Added numerous `dropped_aes` variables to the custom `ggplot2` `stat_` functions for compatibility with `ggplot2 3.4.0`.
+- Replaced `size` aesthetic with `linewidth` for compatibility with `ggplot2 3.4.0`.
+- Lots of minor code style improvements
+- Deprecated function `iir_filt` removed
+- Refactored `run_ICA` and adopted faster SOBI methods
+- Used internal legendre polynomial function and removed `pracma` dependency
+- Used internal whitening methods in `sobi_ICA` and removed `whitenening` dependency
 
 # eegUtils 0.7.0
 
