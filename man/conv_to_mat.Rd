@@ -22,13 +22,9 @@ Convert to 3d matrix
 }
 \section{Methods (by class)}{
 \itemize{
-<<<<<<< HEAD
 \item \code{conv_to_mat(default)}: Default method
 
-\item \code{conv_to_mat(eeg_epochs)}: Convert eeg_epochs to 3D matrix
-=======
 \item \code{conv_to_mat(eeg_epochs)}: Convert \code{eeg_epochs} to 3D matrix
->>>>>>> origin/main
 
 }}
 \keyword{internal}
