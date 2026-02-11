@@ -104,11 +104,48 @@ update_r <-
     max_elec <- calc_max_elec(data)
     r <- switch(interp_limit,
                 "head" = min(max_elec * 1.10, max_elec + 10),
-                "skirt" = r) # mm are expected for coords, 95 is good approx for Fpz - Oz radius
+                "skirt" = r,
+                "convex_hull" = min(max_elec * 1.10, max_elec + 10)) # mm are expected for coords, 95 is good approx for Fpz - Oz radius
     r
   }
 
 #' Calculate maximum electrode distance from origin.
 #' @keywords internal
 calc_max_elec <- function(data) max(sqrt(data$x^2 + data$y^2), na.rm = TRUE)
+
+#' Test whether points lie inside the convex hull of electrode positions
+#'
+#' Uses the cross-product winding method for convex polygons. Optionally
+#' expands the hull outward by a small buffer so that electrode positions
+#' themselves are not clipped.
+#'
+#' @param elec_x,elec_y Numeric vectors of electrode coordinates.
+#' @param grid_x,grid_y Numeric vectors of grid coordinates to test.
+#' @param buffer Fractional expansion of the hull (default 0.10, i.e. 10 percent).
+#' @return A logical vector the same length as `grid_x`.
+#' @keywords internal
+point_in_hull <- function(elec_x, elec_y, grid_x, grid_y, buffer = 0.10) {
+
+  hull_idx <- grDevices::chull(elec_x, elec_y)
+  hx <- elec_x[hull_idx]
+  hy <- elec_y[hull_idx]
+
+  # expand hull outward from centroid
+  cx <- mean(hx)
+  cy <- mean(hy)
+  hx <- cx + (1 + buffer) * (hx - cx)
+  hy <- cy + (1 + buffer) * (hy - cy)
+
+  n <- length(hx)
+  inside <- rep(TRUE, length(grid_x))
+
+  for (i in seq_len(n)) {
+    j <- if (i == n) 1L else i + 1L
+    # cross product of edge vector with point-to-vertex vector
+    cross <- (hx[j] - hx[i]) * (grid_y - hy[i]) -
+             (hy[j] - hy[i]) * (grid_x - hx[i])
+    inside <- inside & (cross <= 0)
+  }
+  inside
+}
 
