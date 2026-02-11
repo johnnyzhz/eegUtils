@@ -90,7 +90,8 @@ the default plot specification, e.g. \code{\link[ggplot2:annotation_borders]{ann
 \item{interpolate}{If \code{TRUE} interpolate linearly, if \code{FALSE}
 (the default) don't interpolate.}
 
-\item{interp_limit}{Topoplot with a "skirt" or inside the "head".}
+\item{interp_limit}{Topoplot with a "skirt", inside the "head", or clipped to
+the "convex_hull" of electrode positions.}
 
 \item{chan_markers}{Defaults to "point". Mark electrode positions with points
 or text.}
