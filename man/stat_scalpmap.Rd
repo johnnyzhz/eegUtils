@@ -17,7 +17,7 @@ stat_scalpmap(
   inherit.aes = TRUE,
   grid_res = 200,
   interpolate = FALSE,
-  interp_limit = c("skirt", "head"),
+  interp_limit = c("skirt", "head", "convex_hull"),
   method = "biharmonic",
   r = NULL,
   ...
@@ -122,7 +122,8 @@ points).}
 \item{interpolate}{If \code{TRUE} interpolate linearly, if \code{FALSE}
 (the default) don't interpolate.}
 
-\item{interp_limit}{Topoplot with a "skirt" or inside the "head".}
+\item{interp_limit}{Topoplot with a "skirt", inside the "head", or clipped to
+the "convex_hull" of electrode positions.}
 
 \item{method}{"biharmonic" or "gam"}
 

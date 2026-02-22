@@ -12,7 +12,7 @@ stat_scalpcontours(
   show.legend = FALSE,
   inherit.aes = TRUE,
   grid_res = 200,
-  interp_limit = c("skirt", "head"),
+  interp_limit = c("skirt", "head", "convex_hull"),
   method = "biharmonic",
   r = NULL,
   bins = 6,
@@ -74,7 +74,8 @@ the default plot specification, e.g. \code{\link[ggplot2:annotation_borders]{ann
 \item{grid_res}{Resolution of the interpolation grid. (Defaults to 200
 points).}
 
-\item{interp_limit}{Interpolate to the "skirt" or inside the "head".}
+\item{interp_limit}{Interpolate to the "skirt", inside the "head", or clipped
+to the "convex_hull" of electrode positions.}
 
 \item{method}{"biharmonic" or "gam" smooth to create interpolated surface}
 
