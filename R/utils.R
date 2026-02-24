@@ -26,14 +26,26 @@ is.true <- function(x) {
   !is.na(x) & x
 }
 
-#' Generate a zero centred vector
+#' Reflect-pad a vector
 #'
-#' @param vec_length how many points you want the vector to have
-#' @importFrom stats median
+#' Pads a vector by reflecting the signal at both boundaries. The reflection is
+#' odd (anti-symmetric): `2*x[1] - rev(x[2:(n+1)])` at the start and
+#' `2*x[end] - rev(x[(end-n):(end-1)])` at the end. This matches the padding
+#' used by SciPy's `filtfilt` and avoids the edge discontinuities caused by
+#' zero-padding.
+#'
+#' @param x Numeric vector to pad.
+#' @param n Number of samples to add at each end.
+#' @return A numeric vector of length `length(x) + 2*n`.
 #' @keywords internal
-zero_vec <- function(vec_length) {
-  out_seq <- seq(1, vec_length, by = 1)
-  out_seq - stats::median(out_seq)
+reflect_pad <- function(x, n) {
+  len <- length(x)
+  if (n >= len) {
+    stop("Pad length must be less than signal length.")
+  }
+  start_pad <- 2 * x[1] - rev(x[2:(n + 1)])
+  end_pad <- 2 * x[len] - rev(x[(len - n):(len - 1)])
+  c(start_pad, x, end_pad)
 }
 
 #' Pad a vector with zeros
@@ -63,18 +75,6 @@ pad <- function(x,
 unpad <- function(x, n) {
   start <- n + 1
   end <- length(x) - n
-  x <- x[start:end]
-  x
-}
-
-#' Fix group delay
-#'
-#' Corrects a signal for the group delay of an FIR filter.
-#'
-#' @keywords internal
-fix_grpdelay <- function(x, n, grp_delay) {
-  start <- n + 1 + grp_delay
-  end <- length(x) - n + grp_delay
   x <- x[start:end]
   x
 }

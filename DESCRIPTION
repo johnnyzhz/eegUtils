@@ -37,8 +37,9 @@ Imports:
     data.table,
     isoband,
     bslib
+Depends:
+  R (>= 4.0.0)
 RoxygenNote: 7.3.3
-Depends: R (>= 4.0.0)
 Suggests: 
     testthat,
     vdiffr,
