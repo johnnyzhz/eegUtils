@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?xml version='1.0' encoding='UTF-8' ?>
 <svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' data-engine-version='2.0' width='720.00pt' height='576.00pt' viewBox='0 0 720.00 576.00'>
 <defs>
@@ -51,57 +50,3 @@
 <text x='39.55' y='15.89' style='font-size: 14.40px; font-family: sans;' textLength='165.72px' lengthAdjust='spacingAndGlyphs'>Plot timecourse of evoked</text>
 </g>
 </svg>
-=======
-<?xml version='1.0' encoding='UTF-8' ?>
-<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' data-engine-version='2.0' width='720.00pt' height='576.00pt' viewBox='0 0 720.00 576.00'>
-<defs>
-  <style type='text/css'><![CDATA[
-    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
-      fill: none;
-      stroke: #000000;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      stroke-miterlimit: 10.00;
-    }
-  ]]></style>
-</defs>
-<rect width='100%' height='100%' style='stroke: none; fill: #FFFFFF;'/>
-<defs>
-  <clipPath id='cpMC4wMHw3MjAuMDB8MC4wMHw1NzYuMDA='>
-    <rect x='0.00' y='0.00' width='720.00' height='576.00' />
-  </clipPath>
-</defs>
-<g clip-path='url(#cpMC4wMHw3MjAuMDB8MC4wMHw1NzYuMDA=)'>
-<rect x='0.00' y='0.00' width='720.00' height='576.00' style='stroke-width: 1.16; stroke: none; fill: #FFFFFF;' />
-</g>
-<defs>
-  <clipPath id='cpMzkuNTV8NzE0LjAyfDI0Ljg1fDUzOS4zMg=='>
-    <rect x='39.55' y='24.85' width='674.47' height='514.46' />
-  </clipPath>
-</defs>
-<g clip-path='url(#cpMzkuNTV8NzE0LjAyfDI0Ljg1fDUzOS4zMg==)'>
-<polyline points='39.55,176.36 47.68,179.25 55.80,164.15 63.93,163.80 72.06,141.87 80.18,150.01 88.31,206.65 96.43,192.13 104.56,153.71 112.69,114.42 120.81,67.36 128.94,24.85 137.07,41.31 145.19,121.08 153.32,219.13 161.44,302.93 169.57,275.24 177.70,258.11 185.82,263.03 193.95,201.90 202.07,152.83 210.20,98.31 218.33,119.31 226.45,150.46 234.58,112.43 242.71,114.71 250.83,165.46 258.96,285.97 267.08,321.98 275.21,277.93 283.34,287.76 291.46,263.70 299.59,278.47 307.71,284.89 315.84,253.26 323.97,243.21 332.09,138.10 340.22,55.26 348.35,111.50 356.47,253.62 364.60,448.60 372.72,529.57 380.85,426.56 388.98,329.73 397.10,260.57 405.23,174.48 413.35,121.68 421.48,68.71 429.61,78.14 437.73,179.16 445.86,253.73 453.99,299.86 462.11,322.83 470.24,267.12 478.36,248.56 486.49,290.42 494.62,263.69 502.74,272.24 510.87,366.54 518.99,431.69 527.12,486.73 535.25,539.32 543.37,520.41 551.50,480.33 559.63,474.96 567.75,458.34 575.88,423.84 584.00,416.16 592.13,411.50 600.26,391.35 608.38,405.16 616.51,434.79 624.63,473.66 632.76,482.42 640.89,429.16 649.01,422.97 657.14,444.60 665.27,401.74 673.39,370.95 681.52,401.89 689.64,398.44 697.77,375.60 705.90,368.55 714.02,332.83 ' style='stroke-width: 2.56; stroke-linecap: butt;' />
-<line x1='244.74' y1='539.32' x2='244.74' y2='24.85' style='stroke-width: 1.07; stroke-linecap: butt;' />
-<line x1='39.55' y1='147.55' x2='714.02' y2='147.55' style='stroke-width: 1.07; stroke-linecap: butt;' />
-</g>
-<g clip-path='url(#cpMC4wMHw3MjAuMDB8MC4wMHw1NzYuMDA=)'>
-<text x='31.18' y='482.18' text-anchor='end' style='font-size: 9.60px; fill: #4D4D4D; font-family: sans;' textLength='8.54px' lengthAdjust='spacingAndGlyphs'>-2</text>
-<text x='31.18' y='316.52' text-anchor='end' style='font-size: 9.60px; fill: #4D4D4D; font-family: sans;' textLength='8.54px' lengthAdjust='spacingAndGlyphs'>-1</text>
-<text x='31.18' y='150.86' text-anchor='end' style='font-size: 9.60px; fill: #4D4D4D; font-family: sans;' textLength='5.34px' lengthAdjust='spacingAndGlyphs'>0</text>
-<polyline points='36.56,478.87 39.55,478.87 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
-<polyline points='36.56,313.21 39.55,313.21 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
-<polyline points='36.56,147.55 39.55,147.55 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
-<polyline points='244.74,542.30 244.74,539.32 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
-<polyline points='452.77,542.30 452.77,539.32 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
-<polyline points='660.80,542.30 660.80,539.32 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
-<text x='244.74' y='554.29' text-anchor='middle' style='font-size: 9.60px; fill: #4D4D4D; font-family: sans;' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>0.0</text>
-<text x='452.77' y='554.29' text-anchor='middle' style='font-size: 9.60px; fill: #4D4D4D; font-family: sans;' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>0.2</text>
-<text x='660.80' y='554.29' text-anchor='middle' style='font-size: 9.60px; fill: #4D4D4D; font-family: sans;' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>0.4</text>
-<text x='376.79' y='567.53' text-anchor='middle' style='font-size: 12.00px; font-family: sans;' textLength='44.00px' lengthAdjust='spacingAndGlyphs'>Time (s)</text>
-<text transform='translate(14.68,321.71) rotate(-90)' style='font-size: 12.00px; font-family: sans;' textLength='60.70px' lengthAdjust='spacingAndGlyphs'>Amplitude (</text>
-<text transform='translate(14.68,261.02) rotate(-90)' style='font-size: 12.00px; font-family: sans;' textLength='6.56px' lengthAdjust='spacingAndGlyphs'>μ</text>
-<text transform='translate(14.68,254.46) rotate(-90)' style='font-size: 12.00px; font-family: sans;' textLength='12.00px' lengthAdjust='spacingAndGlyphs'>V)</text>
-<text x='39.55' y='15.89' style='font-size: 14.40px; font-family: sans;' textLength='165.72px' lengthAdjust='spacingAndGlyphs'>Plot timecourse of evoked</text>
-</g>
-</svg>
->>>>>>> develop
