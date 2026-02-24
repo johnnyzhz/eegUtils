@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version='1.0' encoding='UTF-8' ?>
 <svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' data-engine-version='2.0' width='720.00pt' height='576.00pt' viewBox='0 0 720.00 576.00'>
 <defs>
@@ -60,3 +61,67 @@
 <text x='44.63' y='15.89' style='font-size: 14.40px; font-family: sans;' textLength='308.98px' lengthAdjust='spacingAndGlyphs'>Plot timecourse of tfr in db at specific freq_range</text>
 </g>
 </svg>
+=======
+<?xml version='1.0' encoding='UTF-8' ?>
+<svg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' class='svglite' data-engine-version='2.0' width='720.00pt' height='576.00pt' viewBox='0 0 720.00 576.00'>
+<defs>
+  <style type='text/css'><![CDATA[
+    .svglite line, .svglite polyline, .svglite polygon, .svglite path, .svglite rect, .svglite circle {
+      fill: none;
+      stroke: #000000;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-miterlimit: 10.00;
+    }
+  ]]></style>
+</defs>
+<rect width='100%' height='100%' style='stroke: none; fill: #FFFFFF;'/>
+<defs>
+  <clipPath id='cpMC4wMHw3MjAuMDB8MC4wMHw1NzYuMDA='>
+    <rect x='0.00' y='0.00' width='720.00' height='576.00' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8MC4wMHw1NzYuMDA=)'>
+<rect x='0.00' y='0.00' width='720.00' height='576.00' style='stroke-width: 1.16; stroke: none; fill: #FFFFFF;' />
+</g>
+<defs>
+  <clipPath id='cpNDQuNjN8NzE0LjAyfDI0Ljg1fDUzOS4zMg=='>
+    <rect x='44.63' y='24.85' width='669.40' height='514.46' />
+  </clipPath>
+</defs>
+<g clip-path='url(#cpNDQuNjN8NzE0LjAyfDI0Ljg1fDUzOS4zMg==)'>
+<polyline points='44.63,42.96 63.75,42.88 82.88,41.78 102.00,39.77 121.13,37.07 140.26,33.98 159.38,30.84 178.51,28.02 197.63,25.91 216.76,24.85 235.88,25.14 255.01,26.99 274.13,30.54 293.26,35.84 312.39,42.85 331.51,51.53 350.64,61.82 369.76,73.76 388.89,87.44 408.01,103.07 427.14,120.84 446.26,140.95 465.39,163.46 484.52,188.31 503.64,215.25 522.77,243.90 541.89,273.74 561.02,304.19 580.14,334.71 599.27,364.88 618.39,394.48 637.52,423.48 656.65,452.09 675.77,480.66 694.90,509.62 714.02,539.32 ' style='stroke-width: 1.16; stroke-linecap: butt;' />
+<line x1='68.53' y1='539.32' x2='68.53' y2='24.85' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<line x1='44.63' y1='42.91' x2='714.02' y2='42.91' style='stroke-width: 1.07; stroke-linecap: butt;' />
+</g>
+<g clip-path='url(#cpMC4wMHw3MjAuMDB8MC4wMHw1NzYuMDA=)'>
+<text x='36.26' y='509.09' text-anchor='end' style='font-size: 9.60px; fill: #4D4D4D; font-family: sans;' textLength='16.54px' lengthAdjust='spacingAndGlyphs'>-2.5</text>
+<text x='36.26' y='416.51' text-anchor='end' style='font-size: 9.60px; fill: #4D4D4D; font-family: sans;' textLength='16.54px' lengthAdjust='spacingAndGlyphs'>-2.0</text>
+<text x='36.26' y='323.94' text-anchor='end' style='font-size: 9.60px; fill: #4D4D4D; font-family: sans;' textLength='16.54px' lengthAdjust='spacingAndGlyphs'>-1.5</text>
+<text x='36.26' y='231.36' text-anchor='end' style='font-size: 9.60px; fill: #4D4D4D; font-family: sans;' textLength='16.54px' lengthAdjust='spacingAndGlyphs'>-1.0</text>
+<text x='36.26' y='138.79' text-anchor='end' style='font-size: 9.60px; fill: #4D4D4D; font-family: sans;' textLength='16.54px' lengthAdjust='spacingAndGlyphs'>-0.5</text>
+<text x='36.26' y='46.22' text-anchor='end' style='font-size: 9.60px; fill: #4D4D4D; font-family: sans;' textLength='13.35px' lengthAdjust='spacingAndGlyphs'>0.0</text>
+<polyline points='41.64,505.78 44.63,505.78 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='41.64,413.21 44.63,413.21 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='41.64,320.63 44.63,320.63 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='41.64,228.06 44.63,228.06 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='41.64,135.49 44.63,135.49 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='41.64,42.91 44.63,42.91 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='68.53,542.30 68.53,539.32 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='190.94,542.30 190.94,539.32 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='313.34,542.30 313.34,539.32 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='435.75,542.30 435.75,539.32 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='558.15,542.30 558.15,539.32 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<polyline points='680.55,542.30 680.55,539.32 ' style='stroke-width: 1.07; stroke-linecap: butt;' />
+<text x='68.53' y='554.29' text-anchor='middle' style='font-size: 9.60px; fill: #4D4D4D; font-family: sans;' textLength='18.69px' lengthAdjust='spacingAndGlyphs'>0.00</text>
+<text x='190.94' y='554.29' text-anchor='middle' style='font-size: 9.60px; fill: #4D4D4D; font-family: sans;' textLength='18.69px' lengthAdjust='spacingAndGlyphs'>0.05</text>
+<text x='313.34' y='554.29' text-anchor='middle' style='font-size: 9.60px; fill: #4D4D4D; font-family: sans;' textLength='18.69px' lengthAdjust='spacingAndGlyphs'>0.10</text>
+<text x='435.75' y='554.29' text-anchor='middle' style='font-size: 9.60px; fill: #4D4D4D; font-family: sans;' textLength='18.69px' lengthAdjust='spacingAndGlyphs'>0.15</text>
+<text x='558.15' y='554.29' text-anchor='middle' style='font-size: 9.60px; fill: #4D4D4D; font-family: sans;' textLength='18.69px' lengthAdjust='spacingAndGlyphs'>0.20</text>
+<text x='680.55' y='554.29' text-anchor='middle' style='font-size: 9.60px; fill: #4D4D4D; font-family: sans;' textLength='18.69px' lengthAdjust='spacingAndGlyphs'>0.25</text>
+<text x='379.32' y='567.53' text-anchor='middle' style='font-size: 12.00px; font-family: sans;' textLength='44.00px' lengthAdjust='spacingAndGlyphs'>Time (s)</text>
+<text transform='translate(14.24,282.09) rotate(-90)' text-anchor='middle' style='font-size: 12.00px; font-family: sans;' textLength='72.04px' lengthAdjust='spacingAndGlyphs'>Decibels (dB)</text>
+<text x='44.63' y='15.89' style='font-size: 14.40px; font-family: sans;' textLength='308.98px' lengthAdjust='spacingAndGlyphs'>Plot timecourse of tfr in db at specific freq_range</text>
+</g>
+</svg>
+>>>>>>> develop
