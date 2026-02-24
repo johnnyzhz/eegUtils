@@ -266,7 +266,8 @@ fir_filter_signals <- function(signals,
                                             start <- pad_n + 1 + grp_delay
                                             end <- pad_n + n_sig + grp_delay
                                             x_filt[start:end]
-                                          })
+                                          },
+                                          future.packages = "eegUtils")
   tibble::as_tibble(filtered)
 }
 
@@ -302,7 +303,8 @@ iir_filter_signals <- function(signals,
                                             )
                                             # Trim padding
                                             rev_filt[(pn + 1):(pn + n)]
-                                          })
+                                          },
+                                          future.packages = "eegUtils")
   tibble::as_tibble(filtered)
 }
 
