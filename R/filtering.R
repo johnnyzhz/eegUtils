@@ -418,11 +418,11 @@ est_filt_order <- function(window,
                            tbw,
                            srate) {
 
-  if (identical(window, "hamming")) {
-    filt_ord <- 3.3 * srate
-  } else {
-    stop("Only hamming windows currently implemented.")
-  }
+  filt_ord <- switch(window,
+                     "hamming"  = 3.3 * srate,
+                     "hann"     = 3.1 * srate,
+                     "blackman" = 5.5 * srate,
+                     stop("Unsupported window type: ", window))
 
   filt_ord <- filt_ord / min(tbw)
   filt_ord <- max(round(filt_ord, 1))
@@ -434,8 +434,8 @@ est_filt_order <- function(window,
 #' Generate filter coefficients
 #'
 #' Generate filter coefficients for an IIR or FIR filter. FIR coefficients are
-#' generated using [signal::fir1()], which places the -6 dB cutoff precisely at
-#' the specified frequency.
+#' generated using [signal::fir1()], which places the -6 dB cutoff
+#' approximately at the specified frequency (within ~0.1 Hz).
 #'
 #' @param method IIR or FIR
 #' @param filt_pars output of parse_filt_freqs
@@ -465,6 +465,51 @@ filter_coefs <- function(method,
                         type = filt_pars$filt_type,
                         window = win)
   as.numeric(coefs)
+}
+
+
+#' Compute the frequency response of a filter
+#'
+#' Returns the magnitude frequency response for a filter specification, without
+#' needing to apply the filter to any data. Useful for inspecting filter
+#' characteristics before filtering.
+#'
+#' @param low_freq Low cutoff frequency (Hz).
+#' @param high_freq High cutoff frequency (Hz).
+#' @param srate Sampling rate (Hz).
+#' @param method "fir" or "iir". Defaults to "fir".
+#' @param filter_order "auto" or integer filter order.
+#' @param trans_bw "auto" or numeric transition bandwidth (FIR only).
+#' @param window Window function (FIR only). Defaults to "hamming".
+#' @param n Number of frequency points. Defaults to 4096.
+#' @return A data frame with columns \code{frequency} (Hz), \code{magnitude}
+#'   (linear), and \code{magnitude_db} (dB).
+#' @export
+filter_response <- function(low_freq = NULL,
+                            high_freq = NULL,
+                            srate,
+                            method = "fir",
+                            filter_order = "auto",
+                            trans_bw = "auto",
+                            window = "hamming",
+                            n = 4096) {
+
+  prep <- prepare_filter(srate, low_freq, high_freq,
+                         filter_order, trans_bw, method, window)
+  coefs <- prep$filt_coef
+
+  if (inherits(coefs, "Arma")) {
+    fz <- signal::freqz(coefs$b, coefs$a, n = n, Fs = srate)
+  } else {
+    fz <- signal::freqz(coefs, n = n, Fs = srate)
+  }
+
+  mag <- abs(fz$h)
+  data.frame(
+    frequency    = fz$f,
+    magnitude    = mag,
+    magnitude_db = 20 * log10(mag)
+  )
 }
 
 

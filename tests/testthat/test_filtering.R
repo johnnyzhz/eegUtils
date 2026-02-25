@@ -91,3 +91,48 @@ test_that("FIR low-pass attenuates high frequencies", {
   expect_true(high_freq_power < low_freq_power)
 
 })
+
+# fir1 places the -6 dB crossing ~0.1 Hz below the specified cutoff regardless
+# of window type; +-0.5 Hz tolerance comfortably accommodates this.
+
+test_that("FIR low-pass -6dB crossing is within 0.5 Hz of specified cutoff", {
+  resp <- filter_response(high_freq = 30, srate = 256)
+  cutoff_idx <- which(resp$magnitude <= 0.5)[1]
+  expect_true(!is.na(cutoff_idx))
+  expect_true(abs(resp$frequency[cutoff_idx] - 30) < 0.5)
+})
+
+test_that("FIR high-pass -6dB crossing is within 0.5 Hz of specified cutoff", {
+  resp <- filter_response(low_freq = 1, srate = 256)
+  cutoff_idx <- which(resp$magnitude >= 0.5)[1]
+  expect_true(!is.na(cutoff_idx))
+  expect_true(abs(resp$frequency[cutoff_idx] - 1) < 0.5)
+})
+
+test_that("FIR bandpass magnitude at centre frequency is near 0dB", {
+  resp <- filter_response(low_freq = 8, high_freq = 30, srate = 256)
+  centre_freq <- sqrt(8 * 30)  # geometric mean ~ 15.5 Hz
+  centre_idx <- which.min(abs(resp$frequency - centre_freq))
+  expect_true(resp$magnitude_db[centre_idx] > -3)
+})
+
+test_that("IIR low-pass -3dB crossing is within 0.5 Hz of specified cutoff", {
+  resp <- filter_response(high_freq = 30, srate = 256, method = "iir")
+  cutoff_idx <- which(resp$magnitude <= (1 / sqrt(2)))[1]
+  expect_true(!is.na(cutoff_idx))
+  expect_true(abs(resp$frequency[cutoff_idx] - 30) < 0.5)
+})
+
+test_that("hann window filter_order auto works and cutoff is correct", {
+  resp <- filter_response(high_freq = 30, srate = 256, window = "hann")
+  cutoff_idx <- which(resp$magnitude <= 0.5)[1]
+  expect_true(!is.na(cutoff_idx))
+  expect_true(abs(resp$frequency[cutoff_idx] - 30) < 0.5)
+})
+
+test_that("blackman window filter_order auto works and cutoff is correct", {
+  resp <- filter_response(high_freq = 30, srate = 256, window = "blackman")
+  cutoff_idx <- which(resp$magnitude <= 0.5)[1]
+  expect_true(!is.na(cutoff_idx))
+  expect_true(abs(resp$frequency[cutoff_idx] - 30) < 0.5)
+})
