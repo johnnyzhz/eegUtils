@@ -17,7 +17,7 @@ filter_coefs(method, filt_pars, filter_order, window)
 }
 \description{
 Generate filter coefficients for an IIR or FIR filter. FIR coefficients are
-generated using \code{\link[signal:fir1]{signal::fir1()}}, which places the -6 dB cutoff precisely at
-the specified frequency.
+generated using \code{\link[signal:fir1]{signal::fir1()}}, which places the -6 dB cutoff
+approximately at the specified frequency (within ~0.1 Hz).
 }
 \keyword{internal}
