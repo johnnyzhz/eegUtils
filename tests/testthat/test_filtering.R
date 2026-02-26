@@ -92,8 +92,12 @@ test_that("FIR low-pass attenuates high frequencies", {
 
 })
 
-# fir1 places the -6 dB crossing ~0.1 Hz below the specified cutoff regardless
-# of window type; +-0.5 Hz tolerance comfortably accommodates this.
+# fir1 has a constant offset of ~-0.00097 in normalised frequency (W = f/Nyquist),
+# so the -6 dB crossing falls slightly below the requested cutoff. In Hz the
+# offset scales linearly with sample rate: ~-0.06 Hz at 128 Hz, ~-0.12 Hz at
+# 256 Hz, ~-0.25 Hz at 512 Hz, ~-0.48 Hz at 1000 Hz. The offset is the same
+# regardless of window type. Tests below use srate = 256, so +-0.5 Hz tolerance
+# comfortably accommodates the ~-0.12 Hz offset seen there.
 
 test_that("FIR low-pass -6dB crossing is within 0.5 Hz of specified cutoff", {
   resp <- filter_response(high_freq = 30, srate = 256)
