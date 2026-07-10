@@ -19,6 +19,75 @@ ar_FASTER <- function(data, ...) {
   UseMethod("ar_FASTER", data)
 }
 
+#' @describeIn ar_FASTER Run FASTER on continuous `eeg_data`
+#' @export
+ar_FASTER.eeg_data <- function(data,
+                               exclude = NULL,
+                               test_chans = TRUE,
+                               test_epochs = FALSE,
+                               test_cine = FALSE,
+                               ...) {
+
+  check_ci_str(data$chan_info)
+
+  if (is.null(channels(data))) {
+    stop("No channel information found, ar_FASTER() requires (at least some) channel locations.")
+  } else {
+    channels(data) <- validate_channels(channels(data),
+                                        channel_names(data))
+  }
+
+  orig_ref <- NULL
+  excluded <- NULL
+
+  if (!is.null(data$reference)) {
+    orig_ref <- data$reference$ref_chans
+    excluded <- data$reference$excluded
+  }
+
+  orig_names <- channel_names(data)
+  ref_chans <- character(0)
+
+  if (!is.null(data$reference)) {
+    ref_chans <- data$reference$ref_chans
+  }
+
+  data_chans <- orig_names[!(orig_names %in% ref_chans)]
+
+  if (!is.null(exclude)) {
+    if (is.numeric(exclude)) {
+      exclude <- orig_names[exclude]
+    }
+    message("Excluding channel(s):", paste(exclude, ""))
+    data_chans <- data_chans[!(data_chans %in% exclude)]
+  }
+
+  if (test_chans) {
+    data <- faster_global_chans(data,
+                                data_chans)
+  } else {
+    message("Skipping global bad channel detection...")
+  }
+
+  if (test_epochs) {
+    message("Skipping globally bad epoch detection for continuous eeg_data...")
+  }
+
+  if (test_cine) {
+    message("Skipping detection of locally bad channels in epochs for continuous eeg_data...")
+  }
+
+  if (!is.null(orig_ref)) {
+    data <- eeg_reference(data,
+                          ref_chans = orig_ref,
+                          exclude = excluded,
+                          verbose = FALSE)
+  }
+
+  data
+}
+
+
 #' @param exclude Channels to be ignored by FASTER.
 #' @param test_chans Logical. Run tests of global channel statistics
 #' @param test_epochs Logical. Run tests of globally bad epochs.
