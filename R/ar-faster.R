@@ -575,3 +575,57 @@ ar_FASTER.eeg_group <- function(data,
   }
 
 }
+
+#' Detect and repair globally bad channels for FASTER
+#'
+#' @param data An `eeg_data` or `eeg_epochs` object.
+#' @param data_chans Names of channels to include in FASTER statistics.
+#' @keywords internal
+
+faster_global_chans <- function(data,
+                                data_chans) {
+  bad_chans <- faster_chans(data$signals[, data_chans])
+  bad_chan_n <- data_chans[bad_chans]
+  message(paste("Globally bad channels:",
+                paste(bad_chan_n, collapse = " ")))
+
+  if (length(bad_chan_n) == 0) {
+    return(data)
+  }
+
+  if (is.null(data$chan_info)) {
+    warning("no chan_info, removing chans.")
+    data <- select_elecs(data,
+                         electrode = bad_chan_n,
+                         keep = FALSE)
+    return(data)
+  }
+
+  check_bads <- bad_chan_n %in% data$chan_info$electrode
+  which_bad <- data$chan_info$electrode %in% bad_chan_n
+  missing_coords <- FALSE
+
+  if (any(which_bad)) {
+    missing_coords <- apply(is.na(data$chan_info[which_bad, ]), 1, any)
+  }
+
+  missing_bads <- bad_chan_n[!check_bads | missing_coords]
+
+  if (length(missing_bads) > 0 ) {
+    bad_chan_n <- bad_chan_n[!bad_chan_n %in% missing_bads]
+    warning("Missing chan_info for bad channel(s): ",
+            paste0(missing_bads,
+                   collapse = " "), ". Removing channels.")
+    data <- select_elecs(data,
+                         electrode = missing_bads,
+                         keep = FALSE)
+  }
+
+  if (length(bad_chan_n) > 0) {
+    data <- interp_elecs(data,
+                         bad_chan_n)
+  }
+
+  data
+}
+                       
