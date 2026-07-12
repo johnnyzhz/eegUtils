@@ -50,11 +50,30 @@ import_erplab <- function(file_name,
   signals <- t(signals)
 
   chan_info <- drop(Reduce(rbind, temp_dat$ERP["chanlocs", , ]))
-  chan_info <- apply(chan_info, 1, unlist)
-  chan_info <- lapply(chan_info,
-                      function(x) if (length(x) == 0) NA else x)
-  chan_info <- tibble::as_tibble(chan_info)
-  chan_info <- parse_chaninfo(chan_info)
+
+# Extract channel information
+chan_info <- apply(chan_info, 1, unlist)
+
+# Convert empty fields to NA
+chan_info <- lapply(chan_info,
+                    function(x) {
+                      if (length(x) == 0) NA else x
+                    })
+
+# Find number of channels from labels
+n_labels <- length(chan_info$labels)
+
+# Pad all channel fields to the same length
+chan_info <- lapply(chan_info, function(x) {
+  length(x) <- n_labels
+  x
+})
+
+# Convert to tibble
+chan_info <- tibble::as_tibble(chan_info)
+
+# Rename labels to electrode
+chan_info <- parse_chaninfo(chan_info)
 
   colnames(signals) <- chan_info$electrode
   srate <- unlist(temp_dat$ERP["srate", ,])
