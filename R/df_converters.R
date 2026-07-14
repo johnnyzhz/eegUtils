@@ -419,4 +419,60 @@ as.data.frame.eeg_ICA <- function(x,
   df
 }
 
+#' Convert `eeg_group` object to data frame
+#'
+#' Converts an `eeg_group` object to a data frame by combining all columns from
+#' `signals` and `timings`, then joining epoch-level information such as
+#' `epoch_labels` when available.
+#'
+#' @param x Object of class `eeg_group`.
+#' @param row.names Kept for compatability with S3 generic, ignored.
+#' @param optional Kept for compatability with S3 generic, ignored.
+#' @param long Convert to long format. Defaults to FALSE.
+#' @param coords Include electrode coordinates in output. Ignored if long = FALSE.
+#' @param ... arguments for other as.data.frame commands.
+#'
+#' @export
+
+as.data.frame.eeg_group <- function(x,
+                                    row.names = NULL,
+                                    optional = FALSE,
+                                    long = FALSE,
+                                    coords = TRUE,
+                                    ...) {
+
+  chan_info <- channels(x)
+  chan_names <- channel_names(x)
+  x_df <- cbind(x$signals,
+                x$timings)
+
+  if (!is.null(x$epochs)) {
+    epoch_info <- x$epochs
+    join_cols <- intersect(c("participant_id", "epoch"), names(epoch_info))
+    join_cols <- join_cols[join_cols %in% names(x_df)]
+
+    if (length(join_cols) > 0) {
+      unique_cols <- names(epoch_info)[!(names(epoch_info) %in% names(x_df))]
+      epoch_info <- epoch_info[, c(join_cols, unique_cols), drop = FALSE]
+      x_df <- dplyr::left_join(x_df,
+                               epoch_info,
+                               by = join_cols)
+    }
+  }
+
+  if (long) {
+    x_df <- tidyr::pivot_longer(x_df,
+                                cols = dplyr::all_of(chan_names),
+                                names_to = "electrode",
+                                values_to = "amplitude")
+
+    if (coords && !is.null(chan_info)) {
+      x_df <- dplyr::left_join(x_df,
+                               chan_info[, c("electrode", "x", "y")],
+                               by = "electrode")
+    }
+  }
+
+  x_df
+}
 
