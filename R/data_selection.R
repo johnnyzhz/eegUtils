@@ -632,3 +632,79 @@ proc_events <- function(epoch_events,
     epoch_no <- as.numeric(epoch_nos[keep_rows])
   }
 }
+
+#' Select participants
+#'
+#' This is a generic function for selecting participants from grouped EEG data.
+#'
+#' @param data `eeg_group` object from which to select participants.
+#' @param ... Parameters passed to specific methods.
+#' @family data selection functions
+#' @seealso [select_times()], [select_elecs()], and [select_epochs()]
+#' @export
+
+select_participants <- function(data, ...) {
+  UseMethod("select_participants", data)
+}
+
+#' @describeIn select_participants Select from generic object
+#' @export
+
+select_participants.default <- function(data, ...) {
+
+  warning(paste("select_participants does not know how to handle object of class",
+                class(data),
+                "and can only be used on eeg_group objects."))
+}
+
+#' @param participant_id Character vector of participant IDs to select.
+#' @param keep Defaults to TRUE, meaning select the specified participants. Set
+#'   to FALSE to remove specified participants.
+#' @param df_out Output a data.frame instead of an eeg_group object.
+#' @describeIn select_participants Selection of participants from `eeg_group` objects.
+#' @export
+
+select_participants.eeg_group <- function(data,
+                                          participant_id = NULL,
+                                          keep = TRUE,
+                                          df_out = FALSE,
+                                          ...) {
+
+  if (is.null(participant_id)) {
+    warning("No participant_id specified. Returning all data.")
+    return(data)
+  }
+
+  if (!"participant_id" %in% names(data$timings)) {
+    stop("No participant_id column found in data$timings.")
+  }
+
+  participant_found <- participant_id %in% unique(data$timings$participant_id)
+  if (!all(participant_found)) {
+    warning("Participant(s) not found: ",
+            paste(participant_id[!participant_found], collapse = ", "),
+            ". Returning all data.")
+    return(data)
+  }
+
+  keep_rows <- data$timings$participant_id %in% participant_id
+  if (!keep) {
+    keep_rows <- !keep_rows
+  }
+
+  data$signals <- data$signals[keep_rows, , drop = FALSE]
+  data$timings <- data$timings[keep_rows, , drop = FALSE]
+
+  if (!is.null(data$epochs) && "participant_id" %in% names(data$epochs)) {
+    data$epochs <- data$epochs[data$epochs$participant_id %in% unique(data$timings$participant_id), , drop = FALSE]
+  }
+
+  if (!is.null(data$events) && "participant_id" %in% names(data$events)) {
+    data$events <- data$events[data$events$participant_id %in% unique(data$timings$participant_id), , drop = FALSE]
+  }
+
+  if (df_out) {
+    return(as.data.frame(data))
+  }
+  data
+}
