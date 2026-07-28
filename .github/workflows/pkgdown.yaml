@@ -28,7 +28,6 @@ jobs:
       - name: Build binary
         shell: bash
         run: |
-          R CMD INSTALL .
           R CMD build .
 
           PKG=$(ls *.tar.gz)
