@@ -42,8 +42,8 @@ installation tutorial](https://neuroconductor.org/tutorials/install)
 
 ## Binaries for Windows and Mac
 
-- Windows: https://zhang.psychstat.org/assets/uploads/eegUtils_0.8.0.zip
-- Mac: https://zhang.psychstat.org/assets/uploads/eegUtils_0.8.0.tgz
+- Windows: https://zhang.psychstat.org/assets/uploads/eegUtils_0.9.zip
+- Mac: https://zhang.psychstat.org/assets/uploads/eegUtils_0.9.tgz
 
 ## Usage
 
