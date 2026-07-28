@@ -39,10 +39,3 @@ jobs:
           path: |
             *.zip
             *.tgz
-
-      - name: Upload Release Assets
-        uses: softprops/action-gh-release@v2
-        with:
-          files: |
-            *.zip
-            *.tgz
