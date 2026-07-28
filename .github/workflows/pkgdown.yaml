@@ -44,7 +44,7 @@ jobs:
 
   release:
     needs: build
-    if: github.event_name == 'push'
+    if: github.ref_type == 'tag'
     runs-on: ubuntu-latest
 
     steps:
@@ -57,3 +57,10 @@ jobs:
           files: |
             **/*.zip
             **/*.tgz
+      
+      - name: Debug event
+        run: |
+          echo "event=${{ github.event_name }}"
+          echo "ref=${{ github.ref }}"
+          echo "ref_name=${{ github.ref_name }}"
+          echo "ref_type=${{ github.ref_type }}"      
