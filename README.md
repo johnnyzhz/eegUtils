@@ -42,89 +42,24 @@ installation tutorial](https://neuroconductor.org/tutorials/install)
 
 ## Binaries for Windows and Mac
 
+I have made a few small changes to the package based on the developing branch of `eegUtils`. You can install this version use
+
+``` r
+#install.packages("remotes")
+remotes::install_github("johnnyzhz/eegUtils")
+```
+
+The binaries can be download here:
+
 - Windows: [https://github.com/johnnyzhz/eegUtils/releases/download/v0.9.0.9000/eegUtils_0.9.0.9000.zip](https://github.com/johnnyzhz/eegUtils/releases/download/v0.9.0.9000/eegUtils_0.9.0.9000.zip)
 - Mac: [https://github.com/johnnyzhz/eegUtils/releases/download/v0.9.0.9000/eegUtils_0.9.0.9000.tgz](https://github.com/johnnyzhz/eegUtils/releases/download/v0.9.0.9000/eegUtils_0.9.0.9000.tgz)
 
+To install a binary, use (change the file path and the file, .tgz for Mac and .zip for Windows):
+
+``` r
+install.packages("~/Downloads/eegUtils_0.9.tgz", repos = NULL, type = .Platform$pkgType)
+```
+
 ## Usage
 
-The following examples show how to use `eegUtils` to produce a few
-common plots of EEG data from some simple included example data.
-
-### ERP butterfly plots
-
-``` r
-library(eegUtils)
-#> 
-#> Attaching package: 'eegUtils'
-#> The following object is masked from 'package:stats':
-#> 
-#>     filter
-plot_butterfly(demo_epochs)
-```
-
-![](man/figures/unnamed-chunk-3-1.png)<!-- -->
-
-### Topographical plots
-
-``` r
-topoplot(demo_epochs, 
-         time_lim = c(.22, .25 ))
-#> Using electrode locations from data.
-#> Plotting head r 95 mm
-```
-
-![](man/figures/unnamed-chunk-4-1.png)<!-- -->
-
-### Power spectral density
-
-``` r
-plot_psd(demo_epochs)
-#> Removing channel means per epoch...
-#> Computing Power Spectral Density using Welch's method.
-#> FFT length: 256
-#> Segment length: 84
-#> Overlapping points: 42 (50% overlap)
-```
-
-![](man/figures/unnamed-chunk-5-1.png)<!-- -->
-
-### Time-frequency analysis
-
-``` r
-plot_tfr(compute_tfr(demo_epochs,
-                     foi = c(4, 30),
-                     n_freq = 20,
-                     n_cycles = 3))
-#> Computing TFR using Morlet wavelet convolution
-#> Output frequencies using linear spacing: 4 5.37 6.74 8.11 9.47 10.84 12.21 13.58 14.95 16.32 17.68 19.05 20.42 21.79 23.16 24.53 25.89 27.26 28.63 30
-#> Removing channel means per epoch...
-#> Returning signal averaged over all trials.
-```
-
-![](man/figures/unnamed-chunk-6-1.png)<!-- -->
-
-There are many potential processing steps that precede the production of
-plots like these. For more examples of how to import and process data,
-or import data from other sources, see the [eegUtils
-website](https://craddm.github.io/eegUtils)!
-
-## Contributing
-
-If you have any bug reports or feature requests, please report them
-using the [Github issue
-tracker](https://github.com/craddm/eegUtils/issues).
-
-If you would like to contribute any code, be that anything from a
-documentation fix to a whole new feature, then please begin by raising
-an [issue](https://github.com/craddm/eegUtils/issues) before moving on
-to file a [Github pull
-request](https://github.com/craddm/eegUtils/pulls).
-
-You can find a guide to [how Github issues and pull requests work
-here](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests).
-
-## Code of Conduct
-
-Please note that the `eegUtils` project is released with a [Contributor
-Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project,
-you agree to abide by its terms.
+To see how it can used, please visit the original package website [https://craddm.github.io/eegUtils/](https://craddm.github.io/eegUtils/) where [Matt Craddock](https://github.com/craddm) provided a lot of useful materials.
