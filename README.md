@@ -1,15 +1,7 @@
 eegUtils
 ================
 
-<!-- badges: start -->
-
-[![Repo
-Status](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus.org/#wip)
-[![Coverage
-Status](https://img.shields.io/codecov/c/github/craddm/eegUtils/master.svg)](https://codecov.io/github/craddm/eegUtils?branch=master)
-[![R-CMD-check](https://github.com/craddm/eegUtils/workflows/R-CMD-check/badge.svg)](https://github.com/craddm/eegUtils/actions)
-[![DOI](https://zenodo.org/badge/85406871.svg)](https://zenodo.org/badge/latestdoi/85406871)
-<!-- badges: end -->
+This is a fork of the *eegUtils* developed by [Matt Craddock](https://github.com/craddm). I used the package in a workshop on EEG data analysis I taught. Binary files for Mac and Windows are provided below.
 
 ## Overview
 
@@ -47,6 +39,11 @@ You can also find the package on
 [Neuroconductor](https://neuroconductor.org) - for more information
 about installing packages from Neuroconductor, see the [Neuroconductor
 installation tutorial](https://neuroconductor.org/tutorials/install)
+
+## Binaries for Windows and Mac
+
+- Windows: https://zhang.psychstat.org/assets/uploads/eegUtils_0.8.0.zip
+- Mac: https://zhang.psychstat.org/assets/uploads/eegUtils_0.8.0.tgz
 
 ## Usage
 
