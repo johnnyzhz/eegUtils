@@ -29,15 +29,20 @@ jobs:
         shell: bash
         run: |
           R CMD build .
-
           PKG=$(ls *.tar.gz)
-
           R CMD INSTALL --build "$PKG"
 
-      - uses: actions/upload-artifact@v4
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
         with:
           name: package-${{ matrix.os }}
           path: |
             *.zip
             *.tgz
-            *.tar.gz
+
+      - name: Upload Release Assets
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            *.zip
+            *.tgz
